@@ -1,2 +1,2 @@
-# School-Management-REST-API
-Student Online Test
+# Japanese-language-community-REST-API
+Japanese learning application

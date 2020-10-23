@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Ahmed\git\School-Management-REST-API\venv"
+VIRTUAL_ENV="C:\Ahmed\git\Japanese-language-community-REST-API\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

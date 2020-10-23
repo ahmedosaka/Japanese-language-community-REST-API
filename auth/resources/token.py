@@ -45,3 +45,15 @@ def login_required(f):
             raise MyUnauthorizedException
         return f(username, *args, **kwargs)
     return wrapper
+
+
+def record_author():
+    header = request.headers.get('Authorization')
+    _, token = header.split()
+    try:
+        data = JWTToken.decode(token)
+        author = data["identity"]
+    except Exception as e:
+        raise MyInternalServerErrorException
+    user = User.get_by_username(author)
+    return user

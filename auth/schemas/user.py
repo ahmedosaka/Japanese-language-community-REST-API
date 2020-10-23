@@ -13,6 +13,8 @@ class UserSchema(Schema):
     last_name = fields.String(required=True)
     created = fields.DateTime(dump_only=True)
     modified = fields.DateTime(dump_only=True)
+    is_admin = fields.Boolean(dump_only=True)
+
 
     def load_password(self, value):
         return hash_password(value)

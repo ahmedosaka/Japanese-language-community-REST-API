@@ -4,6 +4,8 @@ from flask_restful import Api
 
 from auth.resources.user import UserView
 from auth.resources.token import TokenResource
+from topics.resources.topics import TopicViews
+from topics.resources.answer import AnswerViews_by_topic_ID, AnswerView_byTopicID_AnswerID, vote_answer_by_id
 
 from config import Config
 from extensions import db
@@ -43,6 +45,10 @@ def register_resources(app):
 
     api.add_resource(UserView, '/users')
     api.add_resource(TokenResource, '/api/v1/auth/login')
+    api.add_resource(TopicViews, '/api/v1/topics')
+    api.add_resource(AnswerViews_by_topic_ID, '/api/topics/<int:topic_id>/answers')
+    api.add_resource(AnswerView_byTopicID_AnswerID, '/api/topics/<int:topic_id>/answers/<int:answer_id>')
+    api.add_resource(vote_answer_by_id, "/api/topics/<topic_id>/answers/<answer_id>/votes")
 
 
 if __name__ == '__main__':

@@ -25,8 +25,14 @@ class UserView(Resource):
 
         data, errors = user_schema.load(data=json_data)
         user = User(**data)
+        if json_data["is_admin"] == 1:
+            user.is_admin = True
+        else:
+            user.is_admin = False
         try:
             user.save()
         except Exception as e:
             raise MyInternalServerErrorException
+
+
         return user_schema.dump(user).data, HTTPStatus.CREATED
